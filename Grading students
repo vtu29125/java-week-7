@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Result {
+
+    public static List<Integer> gradingStudents(List<Integer> grades) {
+
+        List<Integer> result = new ArrayList<>();
+
+        for (int grade : grades) {
+
+            // Failing grade - don't round
+            if (grade < 38) {
+                result.add(grade);
+                continue;
+            }
+
+            // Find next multiple of 5
+            int nextMultiple = ((grade / 5) + 1) * 5;
+
+            // Round if difference is less than 3
+            if (nextMultiple - grade < 3) {
+                result.add(nextMultiple);
+            } else {
+                result.add(grade);
+            }
+        }
+
+        return result;
+    }
+}
